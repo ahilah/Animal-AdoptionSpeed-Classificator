@@ -12,7 +12,7 @@ pd.set_option('display.max_rows', 500)
 import columns
 
 try:
-    ds = pd.read_csv("D:/programming/information-technologies-of-smart-systems/practice/practice-5/data/new_data.csv")
+    ds = pd.read_csv("D:/programming/information-technologies-of-smart-systems/practice/practice-5/final-project/data/new_data.csv")
     print('new data size', ds.shape)
 except FileNotFoundError:
     print("Error: File not found!")
@@ -20,7 +20,7 @@ except FileNotFoundError:
 
 # feature engineering
 try:
-    param_dict = pickle.load(open('D:/programming/information-technologies-of-smart-systems/practice/practice-5/src/param_dict.pickle', 'rb'))
+    param_dict = pickle.load(open('D:/programming/information-technologies-of-smart-systems/practice/practice-5/final-project/src/param_dict.pickle', 'rb'))
 except FileNotFoundError:
     print("Error: Parameter dictionary file not found!")
     exit()
@@ -50,7 +50,7 @@ X = ds[columns.X_columns]
 
 # load the model and predict
 try:
-    rf = pickle.load(open('D://programming//information-technologies-of-smart-systems//practice//practice-5//models/finalized_model.sav', 'rb'))
+    rf = pickle.load(open('D://programming//information-technologies-of-smart-systems//practice//practice-5//final-project//models/finalized_model.sav', 'rb'))
 except FileNotFoundError:
     print("Error: Model file not found!")
     exit()
@@ -58,6 +58,6 @@ except FileNotFoundError:
 try:
     y_pred = rf.predict(X)
     ds['AdoptionSpeed_pred'] = rf.predict(X)
-    ds.to_csv('D:/programming/information-technologies-of-smart-systems/practice/practice-5/data/prediction_results.csv', index=False)
+    ds.to_csv('D:/programming/information-technologies-of-smart-systems/practice/practice-5/final-project/data/prediction_results.csv', index=False)
 except Exception as e:
     print("Error occurred while predicting:", e)
